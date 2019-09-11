@@ -7,24 +7,25 @@
 <table>
     <thead>
         <tr>
+            <th>#</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th></th>
         </tr>
     </thead>
 
     <tbody>
-        <tr>
-            <td>Revolución Francesa</td>
-            <td>...</td>
-        </tr>
-        <tr>
-            <td>Primera Guerra Mundial</td>
-            <td>...</td>
-        </tr>
-        <tr>
-            <td>Lenguajes de Programación for dummies</td>
-            <td>...</td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombre</td>
+                <td>@item.Descripcion</td>
+                <td>
+                    <a href="/Tema/Editar?id=@item.Id">Editar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 
 </table>

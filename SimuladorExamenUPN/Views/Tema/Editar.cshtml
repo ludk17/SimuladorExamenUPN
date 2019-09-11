@@ -1,8 +1,6 @@
-﻿<h2>Crear Tema</h2>
+﻿<h2>Editar Tema</h2>
 
-<h3>@ViewBag.Message</h3>
-
-<form action="/Tema/Crear" method="post">
+<form action="/Tema/Editar" method="post">
     <div>
         Tema
         <input name="Nombre" value="@Model.Nombre">
@@ -12,7 +10,7 @@
     <div>
         Descripción
         <textarea name="Descripcion">@Model.Descripcion</textarea>
-        @*<span>@ViewBag.DescripcionValicion</span>*@
+        <span>@ViewBag.DescripcionValicion</span>
         @Html.ValidationMessage("Descripcion")
     </div>
     <button>Guardar</button>

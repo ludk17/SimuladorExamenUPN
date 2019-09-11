@@ -158,7 +158,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TemaController.cs" />
-    <Compile Include="DB\AppContext.cs" />
+    <Compile Include="DB\SimuladorContext.cs" />
     <Compile Include="DB\Maps\TemaMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,6 +208,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tema\Index.cshtml" />
     <Content Include="Views\Tema\Crear.cshtml" />
+    <Content Include="Views\Tema\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

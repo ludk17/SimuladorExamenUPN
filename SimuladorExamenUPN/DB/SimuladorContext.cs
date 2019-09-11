@@ -8,14 +8,14 @@ using System.Web;
 
 namespace SimuladorExamenUPN.DB
 {
-    public class AppContext : DbContext
+    public class SimuladorContext : DbContext
     {
         public IDbSet<Tema> Temas { get; set; }
 
-        public AppContext()
-        {
-            Database.SetInitializer<AppContext>(null);
-        }
+        //public SimuladorContext()
+        //{
+        //    Database.SetInitializer<SimuladorContext>(null);
+        //}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
