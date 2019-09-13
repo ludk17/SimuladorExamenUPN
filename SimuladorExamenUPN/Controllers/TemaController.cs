@@ -2,6 +2,7 @@
 using SimuladorExamenUPN.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,11 +12,16 @@ namespace SimuladorExamenUPN.Controllers
     public class TemaController : Controller
     {
         [HttpGet]
-        public ViewResult Index()
+        public ViewResult Index(string criterio)
         {
             var context = new SimuladorContext();
-            var temas = context.Temas.ToList();
-            return View(temas);
+            var temas = context.Temas.AsQueryable();
+
+            if (!string.IsNullOrEmpty(criterio))
+                temas = temas.Where(o => o.Nombre.Contains(criterio));
+            
+            ViewBag.Criterio = criterio;
+            return View(temas.ToList());
         }
 
         [HttpGet]
@@ -56,13 +62,38 @@ namespace SimuladorExamenUPN.Controllers
             
             Tema tema = context.Temas.Where(x => x.Id == id).First();
             
+                      
             return View(tema);
         }
 
         [HttpPost]
-        public ViewResult Editar(Tema tema)
+        public ActionResult Editar(Tema tema)
         {
-            return View();
+            var context = new SimuladorContext();
+
+            //Tema temaDB = context.Temas.Where(x => x.Id == tema.Id).First();
+            //temaDB.Nombre = tema.Nombre;
+            //temaDB.Descripcion = tema.Descripcion;
+            //context.SaveChanges();
+            if (ModelState.IsValid == true)
+            {
+                context.Entry(tema).State = EntityState.Modified;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(tema);
+        }
+
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            var context = new SimuladorContext();
+            Tema tema = context.Temas.Where(x => x.Id == id).First();
+            context.Temas.Remove(tema);
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         //private bool EsValido(Tema tema)

@@ -3,6 +3,10 @@
 
 <a href="/Tema/Crear">Crear</a>
 
+<form action="/tema/index" method="get">
+    <input name="criterio" value="@ViewBag.Criterio"/>
+    <button>Buscar</button>
+</form>
 
 <table>
     <thead>
@@ -23,6 +27,7 @@
                 <td>@item.Descripcion</td>
                 <td>
                     <a href="/Tema/Editar?id=@item.Id">Editar</a>
+                    <a href="/Tema/Eliminar?id=@item.Id">Eliminar</a>
                 </td>
             </tr>
         }
