@@ -5,14 +5,12 @@
 <form action="/Tema/Crear" method="post">
     <div>
         Tema
-        <input name="Nombre" value="@Model.Nombre">
-        
+        <input name="Nombre" value="@Model.Nombre">        
         @Html.ValidationMessage("Nombre")
     </div>
     <div>
         Descripción
         <textarea name="Descripcion">@Model.Descripcion</textarea>
-        @*<span>@ViewBag.DescripcionValicion</span>*@
         @Html.ValidationMessage("Descripcion")
     </div>
     <button>Guardar</button>
