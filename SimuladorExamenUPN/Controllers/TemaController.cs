@@ -19,7 +19,7 @@ namespace SimuladorExamenUPN.Controllers
 
             if (!string.IsNullOrEmpty(criterio))
                 temas = temas.Where(o => o.Nombre.Contains(criterio));
-            
+
             ViewBag.Criterio = criterio;
             return View(temas.ToList());
         }

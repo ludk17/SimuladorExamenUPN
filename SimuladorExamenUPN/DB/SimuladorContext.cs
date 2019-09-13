@@ -11,6 +11,7 @@ namespace SimuladorExamenUPN.DB
     public class SimuladorContext : DbContext
     {
         public IDbSet<Tema> Temas { get; set; }
+        public IDbSet<Pregunta> Preguntas { get; set; }
 
         //public SimuladorContext()
         //{
@@ -21,6 +22,7 @@ namespace SimuladorExamenUPN.DB
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new TemaMap());
+            modelBuilder.Configurations.Add(new PreguntaMap());
         }
     }
 }

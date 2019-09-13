@@ -1,0 +1,11 @@
+﻿<h2>Editar Pregunta</h2>
+
+<form action="/Pregunta/Editar?id=@Model.Id" method="post">
+    <div>
+        Descripción
+        <textarea name="Descripcion">@Model.Descripcion</textarea>
+        <span>@ViewBag.DescripcionValicion</span>
+        @Html.ValidationMessage("Descripcion")
+    </div>
+    <button>Guardar</button>
+</form>

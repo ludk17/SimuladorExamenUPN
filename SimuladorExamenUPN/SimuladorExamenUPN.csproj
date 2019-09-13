@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -157,12 +158,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\TemaController.cs" />
+    <Compile Include="DB\Maps\PreguntaMap.cs" />
     <Compile Include="DB\SimuladorContext.cs" />
     <Compile Include="DB\Maps\TemaMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Tema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,6 +213,9 @@
     <Content Include="Views\Tema\Index.cshtml" />
     <Content Include="Views\Tema\Crear.cshtml" />
     <Content Include="Views\Tema\Editar.cshtml" />
+    <Content Include="Views\Pregunta\Crear.cshtml" />
+    <Content Include="Views\Pregunta\Editar.cshtml" />
+    <Content Include="Views\Pregunta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

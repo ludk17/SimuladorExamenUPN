@@ -1,0 +1,34 @@
+﻿
+<h2>Preguntas</h2>
+
+<a href="/Pregunta/Crear">Crear</a>
+
+<form action="/Pregunta/Index" method="get">
+    <input name="criterio" value="@ViewBag.Criterio"/>
+    <button>Buscar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Pregunta</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Descripcion</td>
+                <td>
+                    <a href="/Pregunta/Editar?id=@item.Id">Editar</a>
+                    <a href="/Pregunta/Eliminar?id=@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
