@@ -14,5 +14,6 @@ namespace SimuladorExamenUPN.Models
         public int TemaId { get; set; }
 
         public Tema Tema { get; set; }
+        public List<Alternativa> Alternativas { get; set; }
     }
 }

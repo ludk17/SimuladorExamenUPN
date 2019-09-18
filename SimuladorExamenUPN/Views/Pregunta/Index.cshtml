@@ -1,33 +1,39 @@
 ﻿
-<h2>Preguntas</h2>
+<h2>Tema: @Model.Nombre</h2>
+<h4>Preguntas</h4>
 
-<a href="/Pregunta/Crear">Crear</a>
-
-<form action="/Pregunta/Index" method="get">
-    <input name="criterio" value="@ViewBag.Criterio"/>
-    <button>Buscar</button>
-</form>
+<a href="/Pregunta/Crear?temaId=@Model.Id">Crear</a>
 
 <table>
     <thead>
         <tr>
             <th>#</th>
-            <th>Tema</th>
             <th>Pregunta</th>
             <th></th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Preguntas)
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Tema.Nombre</td>
                 <td>@item.Descripcion</td>
                 <td>
                     <a href="/Pregunta/Editar?id=@item.Id">Editar</a>
                     <a href="/Pregunta/Eliminar?id=@item.Id">Eliminar</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <ul>
+                        @foreach (var alt in item.Alternativas)
+                        {
+                            <li>
+                                @alt.Descripcion @if (alt.EsCorrecto) { <strong>(X)</strong> }
+                            </li>
+                        }
+                    </ul>
                 </td>
             </tr>
         }

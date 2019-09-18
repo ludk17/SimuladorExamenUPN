@@ -19,21 +19,21 @@ namespace SimuladorExamenUPN.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string criterio)
+        public ActionResult Index(int temaId)
         {
-            var preguntas = context.Preguntas.AsQueryable();
+            var tema = context.Temas
+                //.Include(o => o.Preguntas)
+                .Include(o => o.Preguntas.Select(x => x.Alternativas))
+                .Where(x => x.Id == temaId)
+                .FirstOrDefault();
 
-            if (!string.IsNullOrEmpty(criterio))
-
-                preguntas.Where(o => o.Descripcion.Contains(criterio));
-
-            return View(preguntas.Include(o => o.Tema).ToList());
+            return View(tema);
         }
 
         [HttpGet]
-        public ActionResult Crear()
+        public ActionResult Crear(int temaId)
         {
-            ViewBag.Temas = context.Temas.ToList();
+            ViewBag.Tema = context.Temas.Find(temaId);
             return View(new Pregunta());
         }
 
@@ -42,21 +42,21 @@ namespace SimuladorExamenUPN.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Temas = context.Temas.ToList();
+                ViewBag.Tema = context.Temas.Find(pregunta.TemaId);
                 return View(pregunta);
             }
 
             context.Preguntas.Add(pregunta);
             context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { temaId = pregunta.TemaId });
         }
 
         [HttpGet]
         public ActionResult Editar(int id)
-        {
-            ViewBag.Temas = context.Temas.ToList();
+        {            
             var pregunta = context.Preguntas.Find(id);
+            ViewBag.Tema = context.Temas.Find(pregunta.TemaId);
             return View(pregunta);
         }
 
@@ -64,12 +64,14 @@ namespace SimuladorExamenUPN.Controllers
         public ActionResult Editar(Pregunta pregunta)
         {
             if (!ModelState.IsValid)
+            {
+                ViewBag.Tema = context.Temas.Find(pregunta.TemaId);
                 return View(pregunta);
-
+            }
             context.Entry(pregunta).State = EntityState.Modified;
             context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { temaId = pregunta.TemaId });
         }
 
         [HttpGet]

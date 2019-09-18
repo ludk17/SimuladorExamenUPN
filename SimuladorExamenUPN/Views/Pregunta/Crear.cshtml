@@ -1,20 +1,10 @@
-﻿@using SimuladorExamenUPN.Models;
-@{
-    var temas = (List<Tema>)ViewBag.Temas;
-}
+﻿
 
-<h2>Crear Pregunta</h2>
+<h2>@ViewBag.Tema.Nombre</h2>
+<h4>Crear Pregunta</h4>
 
-<form action="/Pregunta/Crear" method="post">
-
-    <div>
-        <select name="TemaId">
-            @foreach(var item in temas)
-            {
-                <option value="@item.Id">@item.Nombre</option>
-            }
-        </select>
-    </div>
+<form action="/Pregunta/Crear?temaId=@ViewBag.Tema.Id" method="post">
+        
 
     <div>
         Pregunta

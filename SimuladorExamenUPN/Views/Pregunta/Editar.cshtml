@@ -1,29 +1,10 @@
-﻿@using SimuladorExamenUPN.Models;
-@{
-    var temas = (List<Tema>)ViewBag.Temas;
-}
-
-<h2>Editar Pregunta</h2>
+﻿<h2>@ViewBag.Tema.Nombre</h2>
+<h4>Editar Pregunta</h4>
 
 <form action="/Pregunta/Editar?id=@Model.Id" method="post">
-
-    <div>
-        <select name="TemaId">
-            @foreach (var item in temas)
-            {
-                <option @(item.Id == Model.TemaId ? "selected" : "") value="@item.Id">@item.Nombre</option>
-                @*if (item.Id == Model.TemaId)
-                {
-                    <option selected value="@item.Id">@item.Nombre</option>
-                }
-                else
-                {
-                    <option value="@item.Id">@item.Nombre</option>
-                }*@
-            }
-        </select>
-    </div>
-
+    
+    <input type="hidden" name="TemaId" value="@Model.TemaId" />
+    
     <div>
         Descripción
         <textarea name="Descripcion">@Model.Descripcion</textarea>
