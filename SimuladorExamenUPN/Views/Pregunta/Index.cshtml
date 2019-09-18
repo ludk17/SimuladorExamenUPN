@@ -12,6 +12,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Tema</th>
             <th>Pregunta</th>
             <th></th>
         </tr>
@@ -22,6 +23,7 @@
         {
             <tr>
                 <td>@item.Id</td>
+                <td>@item.Tema.Nombre</td>
                 <td>@item.Descripcion</td>
                 <td>
                     <a href="/Pregunta/Editar?id=@item.Id">Editar</a>

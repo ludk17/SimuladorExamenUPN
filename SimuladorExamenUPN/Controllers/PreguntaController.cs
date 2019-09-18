@@ -22,14 +22,18 @@ namespace SimuladorExamenUPN.Controllers
         public ActionResult Index(string criterio)
         {
             var preguntas = context.Preguntas.AsQueryable();
+
             if (!string.IsNullOrEmpty(criterio))
+
                 preguntas.Where(o => o.Descripcion.Contains(criterio));
-            return View(preguntas.ToList());
+
+            return View(preguntas.Include(o => o.Tema).ToList());
         }
 
         [HttpGet]
         public ActionResult Crear()
         {
+            ViewBag.Temas = context.Temas.ToList();
             return View(new Pregunta());
         }
 
@@ -37,7 +41,10 @@ namespace SimuladorExamenUPN.Controllers
         public ActionResult Crear(Pregunta pregunta)
         {
             if (!ModelState.IsValid)
+            {
+                ViewBag.Temas = context.Temas.ToList();
                 return View(pregunta);
+            }
 
             context.Preguntas.Add(pregunta);
             context.SaveChanges();
@@ -48,6 +55,7 @@ namespace SimuladorExamenUPN.Controllers
         [HttpGet]
         public ActionResult Editar(int id)
         {
+            ViewBag.Temas = context.Temas.ToList();
             var pregunta = context.Preguntas.Find(id);
             return View(pregunta);
         }

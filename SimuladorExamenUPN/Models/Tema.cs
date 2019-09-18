@@ -14,13 +14,7 @@ namespace SimuladorExamenUPN.Models
         [Required]
         public string Descripcion { get; set; }
 
-        public Tema() {
-           
-        }
-
-        public Tema(string nombre)
-        {
-            Nombre = nombre;
-        }
+        public List<Pregunta> Preguntas { get; set; }
+       
     }
 }

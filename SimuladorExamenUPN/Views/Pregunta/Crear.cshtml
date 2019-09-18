@@ -1,6 +1,21 @@
-﻿<h2>Crear Pregunta</h2>
+﻿@using SimuladorExamenUPN.Models;
+@{
+    var temas = (List<Tema>)ViewBag.Temas;
+}
+
+<h2>Crear Pregunta</h2>
 
 <form action="/Pregunta/Crear" method="post">
+
+    <div>
+        <select name="TemaId">
+            @foreach(var item in temas)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+    </div>
+
     <div>
         Pregunta
         <textarea name="Descripcion">@Model.Descripcion</textarea>
