@@ -6,10 +6,11 @@
 <form action="/Pregunta/Crear?temaId=@ViewBag.Tema.Id" method="post">
         
 
-    <div>
-        Pregunta
-        <textarea name="Descripcion">@Model.Descripcion</textarea>
+    <div class="form-group">
+        <label>Pregunta</label>
+        <textarea class="form-control" name="Descripcion">@Model.Descripcion</textarea>
         @Html.ValidationMessage("Descripcion")
     </div>
-    <button>Guardar</button>
+    <button class="btn btn-primary">Guardar</button>
+    <a class="btn btn-link" href="/Pregunta/Index?temaId=@ViewBag.Tema.Id">Cancelar</a>
 </form>

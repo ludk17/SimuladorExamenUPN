@@ -2,9 +2,10 @@
 <h2>Tema: @Model.Nombre</h2>
 <h4>Preguntas</h4>
 
-<a href="/Pregunta/Crear?temaId=@Model.Id">Crear</a>
+<a class="btn btn-primary float-right" href="/Pregunta/Crear?temaId=@Model.Id">Crear Pregunta</a>
+<a class="btn btn-link float-right" href="/Tema">Ir a Temas</a>
 
-<table>
+<table class="table table-borderless">
     <thead>
         <tr>
             <th>#</th>
@@ -14,13 +15,14 @@
     </thead>
 
     <tbody>
+        @{ var index = 1; }
         @foreach (var item in Model.Preguntas)
         {
             <tr>
-                <td>@item.Id</td>
-                <td>@item.Descripcion</td>
-                <td>
-                    <a href="/Pregunta/Editar?id=@item.Id">Editar</a>
+                <td><strong>@index</strong></td>
+                <td><strong>@item.Descripcion</strong></td>
+                <td class="text-right">
+                    <a href="/Pregunta/Editar?id=@item.Id">Editar</a> |
                     <a href="/Pregunta/Eliminar?id=@item.Id">Eliminar</a>
                 </td>
             </tr>
@@ -36,6 +38,7 @@
                     </ul>
                 </td>
             </tr>
+            index++;
         }
     </tbody>
 

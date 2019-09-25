@@ -1,17 +1,16 @@
 ﻿<h2>Crear Tema</h2>
 
-<h3>@ViewBag.Message</h3>
-
 <form action="/Tema/Crear" method="post">
-    <div>
-        Tema
-        <input name="Nombre" value="@Model.Nombre">        
+    <div class="form-group">
+        <label>Tema</label>
+        <input name="Nombre" class="form-control" value="@Model.Nombre">
         @Html.ValidationMessage("Nombre")
     </div>
-    <div>
-        Descripción
-        <textarea name="Descripcion">@Model.Descripcion</textarea>
+    <div class="form-group">
+        <label>Descripción</label>
+        <textarea class="form-control" name="Descripcion" rows="5">@Model.Descripcion</textarea>
         @Html.ValidationMessage("Descripcion")
     </div>
-    <button>Guardar</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a class="btn btn-link" href="/Tema">Cancelar</a>
 </form>
