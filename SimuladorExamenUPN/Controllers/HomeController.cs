@@ -10,7 +10,6 @@ namespace SimuladorExamenUPN.Controllers
     {
         public ActionResult Index()
         {
-           // throw new Exception();
             return View();
         }
 
@@ -26,6 +25,35 @@ namespace SimuladorExamenUPN.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ViewResult Page1() {
+            return View();
+        }
+
+        public ViewResult Page2()
+        {
+            return View();
+        }
+
+        public ViewResult Ciudades(int pais)
+        {
+            var ciudades = GetCiudades(pais);
+            return View(ciudades);
+        }
+
+        private List<String> GetCiudades(int pais)
+        {
+            //return db.Ciudades.Where(o => o.PaisId == pais).ToList()
+            switch(pais)
+            {
+                case 1:
+                    return new List<string> { "Lima", "Cajamarca", "La Libertad" };
+                case 2:
+                    return new List<string> { "Bueno Aires", "Mendoza", "Rosario" };
+                default:
+                    return new List<string>();
+            }
         }
     }
 }

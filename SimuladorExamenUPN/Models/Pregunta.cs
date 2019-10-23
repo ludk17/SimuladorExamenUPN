@@ -8,6 +8,11 @@ namespace SimuladorExamenUPN.Models
 {
     public class Pregunta
     {
+        public Pregunta()
+        {
+            Alternativas = new List<Alternativa>();
+        }
+
         public int Id { get; set; }
         [Required]
         public string Descripcion { get; set; }

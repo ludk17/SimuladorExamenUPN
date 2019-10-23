@@ -13,6 +13,7 @@ namespace SimuladorExamenUPN.DB
         public IDbSet<Tema> Temas { get; set; }
         public IDbSet<Pregunta> Preguntas { get; set; }
         public IDbSet<Alternativa> Alternativas { get; set; }
+        public IDbSet<Producto> Productos { get; set; }
 
         //public SimuladorContext()
         //{
@@ -25,6 +26,7 @@ namespace SimuladorExamenUPN.DB
             modelBuilder.Configurations.Add(new TemaMap());
             modelBuilder.Configurations.Add(new PreguntaMap());
             modelBuilder.Configurations.Add(new AlternativaMap());
+            modelBuilder.Configurations.Add(new ProductoMap());
         }
     }
 }

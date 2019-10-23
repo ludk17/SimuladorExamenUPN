@@ -40,6 +40,7 @@ namespace SimuladorExamenUPN.Controllers
         [HttpPost]
         public ActionResult Crear(Pregunta pregunta)
         {
+            Validar(pregunta);
             if (!ModelState.IsValid)
             {
                 ViewBag.Tema = context.Temas.Find(pregunta.TemaId);
@@ -82,6 +83,17 @@ namespace SimuladorExamenUPN.Controllers
             context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+
+
+        private void Validar(Pregunta pregunta)
+        {
+            if (pregunta.Alternativas.Count < 4)
+                ModelState.AddModelError("Alternativas", "Las alternativas deben ser al menos 4");
+
+            if (pregunta.Alternativas.Where(o => o.EsCorrecto).Count() == 0)
+                ModelState.AddModelError("Alternativas", "Las alternativas deben tener al mensos una respusta correcta");
         }
 
     }
