@@ -160,7 +160,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\TemaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="DB\Maps\AlternativaMap.cs" />
+    <Compile Include="DB\Maps\TaxiMap.cs" />
+    <Compile Include="DB\Maps\ViajeMap.cs" />
     <Compile Include="DB\Maps\PreguntaMap.cs" />
     <Compile Include="DB\Maps\ProductoMap.cs" />
     <Compile Include="DB\SimuladorContext.cs" />
@@ -171,7 +175,9 @@
     <Compile Include="Models\Alternativa.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Producto.cs" />
+    <Compile Include="Models\Taxi.cs" />
     <Compile Include="Models\Tema.cs" />
+    <Compile Include="Models\Viaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +235,9 @@
     <Content Include="Views\Home\Page1.cshtml" />
     <Content Include="Views\Home\Page2.cshtml" />
     <Content Include="Views\Home\Ciudades.cshtml" />
+    <Content Include="Views\Viaje\Create.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

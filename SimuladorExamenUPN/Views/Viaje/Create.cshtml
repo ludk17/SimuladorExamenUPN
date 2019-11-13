@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h2>Crear @Session["Usuario"]</h2>
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Persona</label>
+        <select class="form-control" name="Persona">
+            <option value="">--Selecciona una persona --</option>
+            <option @(Model.Persona == "Luis Mendoza"? "selected" : "") value="Luis Mendoza">Luis Mendoza</option>
+            <option @(Model.Persona == "Naruto Uzumaki" ? "selected" : "") value="Naruto Uzumaki">Naruto Uzumaki</option>
+            <option @(Model.Persona == "Goku Kakaroto" ? "selected" : "") value="Goku Kakaroto">Goku Kakaroto</option>
+        </select>
+        @Html.ValidationMessage("Persona")
+    </div>
+    <div class="form-group">
+        <label>Origen</label>
+        <input type="text" class="form-control" name="Origen" id="Origen" readonly />
+        <a href="#" id="btnRefresh">Refresh</a>
+        @Html.ValidationMessage("Origen")
+    </div>
+
+    <div class="form-group">
+        <label>Destino</label>
+        <select class="form-control" name="Destino">
+            <option value="">--Selecciona un Destino--</option>
+            @foreach (var item in ViewBag.Destinos)
+            {
+                <option @(Model.Destino == item ? "selected" : "")  value="@item">@item</option>
+            }
+        </select>
+        @Html.ValidationMessage("Destino")
+    </div>
+
+    <div class="form-group">
+        <label>Taxi</label>
+        <select class="form-control" name="TaxiId" id="TaxiId">
+            <option value="">--Selecciona un taxi -- </option>
+            @foreach (var item in ViewBag.Taxis)
+            {
+                <option @(Model.TaxiId == item.Id ? "selected" : "") value="@item.Id">@item.Placa</option>
+            }
+        </select>
+        @Html.ValidationMessage("TaxiId")
+    </div>
+
+    <div class="form-group">
+        <label>Conductor</label>
+        <input type="text" class="form-control" name="Conductor" id="Conductor" readonly />
+        @Html.ValidationMessage("Conductor")
+    </div>
+
+    <div class="form-group">
+        <label>Precio</label>
+        <input type="text" class="form-control" name="Precio" readonly />
+        @Html.ValidationMessage("Precio")
+    </div>
+
+    <button class="btn btn-primary">Guardar</button>
+
+</form>
+
+<script>
+
+    cargarOrigen();
+
+    $("#btnRefresh").click(function () {
+        cargarOrigen();
+    });
+  
+
+    function cargarOrigen() {
+        $.ajax({ url: "/viaje/GetRandomUbicacion" })
+        .success(function (valor) {
+            $("#Origen").val(valor);
+        });
+    }
+
+
+    $("#TaxiId").change(function () {
+
+
+
+        $.ajax({ url: "/viaje/GetConductor?taxiid=" + $("#TaxiId").val() })
+            .success(function (valor) {
+                $("#Conductor").val(valor);
+            })
+    });
+
+    
+</script>

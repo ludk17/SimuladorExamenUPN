@@ -6,10 +6,15 @@ using System.Web.Mvc;
 
 namespace SimuladorExamenUPN.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "usuario");
+
             return View();
         }
 
