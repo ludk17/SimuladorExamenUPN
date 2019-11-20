@@ -163,6 +163,7 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="DB\Maps\AlternativaMap.cs" />
+    <Compile Include="DB\Maps\CategoriaMap.cs" />
     <Compile Include="DB\Maps\TaxiMap.cs" />
     <Compile Include="DB\Maps\ViajeMap.cs" />
     <Compile Include="DB\Maps\PreguntaMap.cs" />
@@ -173,6 +174,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Alternativa.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Taxi.cs" />

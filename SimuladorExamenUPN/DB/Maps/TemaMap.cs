@@ -13,6 +13,12 @@ namespace SimuladorExamenUPN.DB.Maps
         {
             ToTable("Tema");
             HasKey(o => o.Id);
+
+            HasRequired(o => o.Categoria)
+             .WithMany()
+             .HasForeignKey(o => o.Id);
+
+
             //Property(o => o.Nombre).HasColumnName("Nombre");
         }
     }

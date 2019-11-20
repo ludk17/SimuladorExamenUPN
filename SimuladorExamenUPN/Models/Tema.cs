@@ -16,5 +16,7 @@ namespace SimuladorExamenUPN.Models
 
         public List<Pregunta> Preguntas { get; set; }
        
+        public Categoria Categoria { get; set; }
+
     }
 }

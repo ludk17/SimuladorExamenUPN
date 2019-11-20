@@ -18,6 +18,7 @@ namespace SimuladorExamenUPN.DB
         public IDbSet<Viaje> Viajes { get; set; }
 
         public IDbSet<Taxi> Taxis { get; set; }
+        public IDbSet<Categoria> Categorias { get; set; }
 
         //public SimuladorContext()
         //{
@@ -33,6 +34,7 @@ namespace SimuladorExamenUPN.DB
             modelBuilder.Configurations.Add(new ProductoMap());
             modelBuilder.Configurations.Add(new ViajeMap());
             modelBuilder.Configurations.Add(new TaxiMap());
+            modelBuilder.Configurations.Add(new CategoriaMap());
         }
     }
 }
