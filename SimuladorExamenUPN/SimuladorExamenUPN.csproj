@@ -157,12 +157,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ExamenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\TemaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="DB\Maps\AlternativaMap.cs" />
+    <Compile Include="DB\Maps\ExamenPregunta.cs" />
+    <Compile Include="DB\Maps\ExamenMap.cs" />
     <Compile Include="DB\Maps\TaxiMap.cs" />
     <Compile Include="DB\Maps\ViajeMap.cs" />
     <Compile Include="DB\Maps\PreguntaMap.cs" />
@@ -173,10 +176,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Alternativa.cs" />
+    <Compile Include="Models\Examen.cs" />
+    <Compile Include="Models\ExamenPregunta.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Taxi.cs" />
     <Compile Include="Models\Tema.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Viaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -238,6 +244,8 @@
     <Content Include="Views\Viaje\Create.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Examen\Index.cshtml" />
+    <Content Include="Views\Examen\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

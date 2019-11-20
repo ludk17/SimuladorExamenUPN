@@ -19,10 +19,13 @@ namespace SimuladorExamenUPN.DB
 
         public IDbSet<Taxi> Taxis { get; set; }
 
-        //public SimuladorContext()
-        //{
-        //    Database.SetInitializer<SimuladorContext>(null);
-        //}
+        public IDbSet<Examen> Examenes { get; set; }
+        public IDbSet<ExamenPregunta> ExamenPreguntas { get; set; }
+
+        public SimuladorContext()
+        {
+            Database.SetInitializer<SimuladorContext>(null);
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,6 +36,10 @@ namespace SimuladorExamenUPN.DB
             modelBuilder.Configurations.Add(new ProductoMap());
             modelBuilder.Configurations.Add(new ViajeMap());
             modelBuilder.Configurations.Add(new TaxiMap());
+
+            modelBuilder.Configurations.Add(new ExamenMap());
+            modelBuilder.Configurations.Add(new ExamenPreguntaMap());
+
         }
     }
 }
