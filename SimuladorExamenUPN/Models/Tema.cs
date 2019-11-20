@@ -16,7 +16,13 @@ namespace SimuladorExamenUPN.Models
 
         public List<Pregunta> Preguntas { get; set; }
        
-        public Categoria Categoria { get; set; }
+        public List<TemaCategoria> Categorias { get; set; }
+
+        public Tema()
+        {
+            Preguntas = new List<Pregunta>();
+            Categorias = new List<TemaCategoria>(); 
+        }
 
     }
 }

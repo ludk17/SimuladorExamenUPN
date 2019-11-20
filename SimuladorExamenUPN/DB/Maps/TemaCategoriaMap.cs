@@ -7,14 +7,16 @@ using System.Web;
 
 namespace SimuladorExamenUPN.DB.Maps
 {
-    public class CategoriaMap:EntityTypeConfiguration<Categoria>
+    public class TemaCategoriaMap:EntityTypeConfiguration<TemaCategoria>
     {
-        public CategoriaMap()
+        public TemaCategoriaMap()
         {
-            ToTable("Categoria");
+            ToTable("TemaCategoria");
             HasKey(a=>a.Id);
 
-           
+            HasRequired(a => a.Categoria).
+                WithMany()
+                .HasForeignKey(a => a.CategoriaId);
         }
     }
 }

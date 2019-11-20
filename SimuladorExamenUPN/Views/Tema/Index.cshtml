@@ -25,6 +25,7 @@
         <tr>
             <th>#</th>
             <th>Nombre</th>
+            <th>Categorías</th>
             <th>Descripción</th>
             <th></th>
         </tr>
@@ -36,6 +37,13 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Nombre</td>
+                <td>
+                    @foreach (var categoria in item.Categorias)
+                    {
+                      
+                        <span class="badge badge-primary">@categoria.Categoria.Nombre</span>
+                    }
+                </td>
                 <td>@item.Descripcion</td>
                 <td class="text-right">
                     <a href="/Tema/Editar?id=@item.Id">Editar</a> |

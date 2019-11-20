@@ -14,9 +14,9 @@ namespace SimuladorExamenUPN.DB.Maps
             ToTable("Tema");
             HasKey(o => o.Id);
 
-            HasRequired(o => o.Categoria)
-             .WithMany()
-             .HasForeignKey(o => o.Id);
+            HasMany(o => o.Categorias)
+             .WithOptional()
+             .HasForeignKey( o => o.TemaId);
 
 
             //Property(o => o.Nombre).HasColumnName("Nombre");

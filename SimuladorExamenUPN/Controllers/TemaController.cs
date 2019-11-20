@@ -11,11 +11,16 @@ namespace SimuladorExamenUPN.Controllers
 {
     public class TemaController : Controller
     {
+        public SimuladorContext context;
+        public TemaController()
+        {
+           context = new SimuladorContext();
+        }
         [HttpGet]
         public ViewResult Index(string criterio)
         {
-            var context = new SimuladorContext();
-            var temas = context.Temas.AsQueryable();
+         
+            var temas = context.Temas.Include(a=>a.Categorias.Select(o=>o.Categoria)).AsQueryable();
 
             if (!string.IsNullOrEmpty(criterio))
                 temas = temas.Where(o => o.Nombre.Contains(criterio));
@@ -27,15 +32,16 @@ namespace SimuladorExamenUPN.Controllers
         [HttpGet]
         public ViewResult Crear()
         {
+            ViewBag.Categorias = context.Categorias.ToList();
             ViewBag.Message = "Pantalla de crear";
             return View(new Tema());
         }
 
         [HttpPost] // esto sirve para que solo acepte peticiones http POST
-        public ActionResult Crear(Tema tema)
+        public ActionResult Crear(Tema tema,List<int> Ids)
         {
-            var context = new SimuladorContext();
 
+            ViewBag.Categorias = context.Categorias.ToList();
             //bool pasoValicacion = EsValido(tema);   
             //if (tema.Nombre == null || tema.Nombre == "")
             //    ModelState.AddModelError("Nombre", "Nombre es obligatorio");
@@ -44,8 +50,17 @@ namespace SimuladorExamenUPN.Controllers
 
             if (ModelState.IsValid == true)
             {
+               
                 context.Temas.Add(tema);
                 context.SaveChanges();
+               
+
+                foreach (var categoriaid in Ids)
+                {
+                   var temaCategoria = new TemaCategoria() { CategoriaId = categoriaid, TemaId = tema.Id };
+                    context.TemaCategorias.Add(temaCategoria);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -57,8 +72,7 @@ namespace SimuladorExamenUPN.Controllers
 
         [HttpGet]
         public ViewResult Editar(int id)
-        {
-            var context = new SimuladorContext();
+        {  
             
             Tema tema = context.Temas.Where(x => x.Id == id).First();
             
@@ -69,8 +83,7 @@ namespace SimuladorExamenUPN.Controllers
         [HttpPost]
         public ActionResult Editar(Tema tema)
         {
-            var context = new SimuladorContext();
-
+            
             //Tema temaDB = context.Temas.Where(x => x.Id == tema.Id).First();
             //temaDB.Nombre = tema.Nombre;
             //temaDB.Descripcion = tema.Descripcion;
@@ -88,7 +101,7 @@ namespace SimuladorExamenUPN.Controllers
         [HttpGet]
         public ActionResult Eliminar(int id)
         {
-            var context = new SimuladorContext();
+           
             Tema tema = context.Temas.Where(x => x.Id == id).First();
             context.Temas.Remove(tema);
             context.SaveChanges();

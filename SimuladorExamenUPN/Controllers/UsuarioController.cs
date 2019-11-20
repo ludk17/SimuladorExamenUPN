@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimuladorExamenUPN.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,7 +23,7 @@ namespace SimuladorExamenUPN.Controllers
             if (password == "admin")
             {
                 FormsAuthentication.SetAuthCookie(username, false);
-                Session["Usuario"] = username;
+                Session["Usuario"] = new Usuario { Id = 1, Username = "admin"};
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Validation = "Usuario y/o contraseña incorrecta";
