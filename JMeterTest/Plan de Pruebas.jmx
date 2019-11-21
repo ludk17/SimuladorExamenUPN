@@ -390,7 +390,7 @@
                 <elementProp name="Username" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">Username</stringProp>
-                  <stringProp name="Argument.value">admin</stringProp>
+                  <stringProp name="Argument.value">admin${__Random(1,100)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
