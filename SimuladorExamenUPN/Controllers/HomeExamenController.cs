@@ -28,17 +28,28 @@ namespace SimuladorExamenUPN.Controllers
 
         public ActionResult Confirmar(int ExamenId)
         {
-            var examen = db.Examenes.Where(o => o.Id == ExamenId).Include(o =>o.Tema).Include(u => u.Usuario).FirstOrDefault();
+            var examen = db.Examenes
+                .Where(o => o.Id == ExamenId)
+                .Include(o =>o.Tema)
+                .Include(u => u.Usuario)
+                .FirstOrDefault();
             return View(examen);
         }
 
         public ActionResult DarExamen(int ExamenId)
         {
-            var examen = db.Examenes.Where(o => o.Id == ExamenId).Include(o => o.Preguntas.Select(s => s.Pregunta.Alternativas)).FirstOrDefault();
+            
+            var examen = db.Examenes.Where(o => o.Id == ExamenId)
+                .Include(o => o.Preguntas.Select(s => s.Pregunta.Alternativas))
+                .FirstOrDefault();
 
             return View(examen);
         }
+        [HttpPost]
+        public void GuardarExamen(int ExamenId, string TemaId)
+        {
 
+        }
         
     }
 }
