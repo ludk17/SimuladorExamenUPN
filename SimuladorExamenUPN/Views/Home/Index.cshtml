@@ -1,83 +1,40 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
 }
 
-<style>
-    .red{
-        background-color: red;
+<h2>Examenes disponibles</h2>
 
-    }
-</style>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tema</th>
+                <th>Categoria</th>
+                <th>Fecha de Creacion</th>
+                
+                <th>Usuario</th>
+                <th></th>
+                                        
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var examen in Model)
+            {
+                <tr>
+                    <td>@examen.Tema.Nombre</td>
+                    <td>
+                        @foreach(var categoria in examen.Tema.Categorias)
+                        {
+                            <span class="badge badge-primary">@categoria.Categoria.Nombre</span>
+                        }
+                    </td>
+                    <td>@examen.FechaCreacion</td>
+                    <td>@examen.Usuario.Nombres</td>
+                    <td><a href="/Home/Confirmar?ExamenId=@examen.Id" class="btn btn-dark">Tomar Examen</a></td>
 
-
-<div class="jumbotron" id="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://google.com" id="btnJumbotron" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-
-
-<input id="textoPrueba" type="text" class="form-control" />
-<p class="textoResultado"></p>
-<p class="textoResultado"></p>
-<p class="textoResultado"></p>
-<p class="textoResultado"></p>
-<p class="textoResultado"></p>
-
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-@*<script src="~/Scripts/home.js"></script>*@
-<script>
-
-    //var btnJumbotron = document.getElementById("btnJumbotron");   
-
-    //btnJumbotron.addEventListener("click", function () {
-    //    var elemento = document.getElementById("jumbotron");
-    //    elemento.className = "jumbotron red";
-    //});
-
-    //$("#btnJumbotron").click(function (e) {
-    //    $("#jumbotron").addClass("red");
-    //    e.preventDefault();
-    //});
-
-    $("#btnJumbotron").mouseenter(function () {
-        $("#jumbotron").addClass("red");
-        $("#textoPrueba").val("Hola Mundo");
-    });
-
-    $("#btnJumbotron").mouseleave(function () {
-        $("#jumbotron").removeClass("red");
-    });
-
-
-    $("#textoPrueba").keyup(function(){
-        var valor = $("#textoPrueba").val()
-        $(".textoResultado").html("<h1>Hola Mundo</h1>");
-    });
-
-    // $("<selector>") = sirve para buscar etiqueas html
-    // $("<selector>").<evento>(function(){ <comportamiento> });
-
-</script>

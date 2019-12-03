@@ -19,8 +19,7 @@ namespace SimuladorExamenUPN.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            //validar usuerio y password
-            if (password == "admin")
+            if (username == "admin" && password == "admin")
             {
                 FormsAuthentication.SetAuthCookie(username, false);
                 Session["Usuario"] = new Usuario { Id = 1, Username = "admin"};

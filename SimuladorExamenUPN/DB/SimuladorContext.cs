@@ -14,9 +14,6 @@ namespace SimuladorExamenUPN.DB
         public IDbSet<Pregunta> Preguntas { get; set; }
         public IDbSet<Alternativa> Alternativas { get; set; }
 
-        public IDbSet<Viaje> Viajes { get; set; }
-
-        public IDbSet<Taxi> Taxis { get; set; }
         public IDbSet<Categoria> Categorias { get; set; }
 
         public IDbSet<Examen> Examenes { get; set; }
@@ -35,10 +32,7 @@ namespace SimuladorExamenUPN.DB
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new TemaMap());
             modelBuilder.Configurations.Add(new PreguntaMap());
-            modelBuilder.Configurations.Add(new AlternativaMap());
-            modelBuilder.Configurations.Add(new ViajeMap());
-            modelBuilder.Configurations.Add(new TaxiMap());
-            
+            modelBuilder.Configurations.Add(new AlternativaMap());            
             modelBuilder.Configurations.Add(new CategoriaMap());
             modelBuilder.Configurations.Add(new ExamenMap());
             modelBuilder.Configurations.Add(new ExamenPreguntaMap());

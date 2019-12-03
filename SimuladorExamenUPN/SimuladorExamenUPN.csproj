@@ -159,22 +159,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ExamenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomeExamenController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\TemaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Controllers\ViajeController.cs" />
     <Compile Include="DB\Maps\AlternativaMap.cs" />
     <Compile Include="DB\Maps\ExamenPregunta.cs" />
     <Compile Include="DB\Maps\CategoriaMap.cs" />
     <Compile Include="DB\Maps\ExamenMap.cs" />
-    <Compile Include="DB\Maps\TaxiMap.cs" />
     <Compile Include="DB\Maps\TemaCategoriaMap.cs" />
     <Compile Include="DB\Maps\UsuarioExamenMap.cs" />
     <Compile Include="DB\Maps\UsuarioMap.cs" />
-    <Compile Include="DB\Maps\ViajeMap.cs" />
     <Compile Include="DB\Maps\PreguntaMap.cs" />
-    <Compile Include="DB\Maps\ProductoMap.cs" />
     <Compile Include="DB\SimuladorContext.cs" />
     <Compile Include="DB\Maps\TemaMap.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,12 +181,10 @@
     <Compile Include="Models\ExamenPregunta.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\Producto.cs" />
-    <Compile Include="Models\Taxi.cs" />
     <Compile Include="Models\Tema.cs" />
     <Compile Include="Models\TemaCategoria.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioExamen.cs" />
-    <Compile Include="Models\Viaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,31 +225,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tema\Index.cshtml" />
     <Content Include="Views\Tema\Crear.cshtml" />
     <Content Include="Views\Tema\Editar.cshtml" />
     <Content Include="Views\Pregunta\Crear.cshtml" />
     <Content Include="Views\Pregunta\Editar.cshtml" />
     <Content Include="Views\Pregunta\Index.cshtml" />
-    <Content Include="Views\Productoes\Create.cshtml" />
-    <Content Include="Views\Productoes\Delete.cshtml" />
-    <Content Include="Views\Productoes\Details.cshtml" />
-    <Content Include="Views\Productoes\Edit.cshtml" />
-    <Content Include="Views\Productoes\Index.cshtml" />
-    <Content Include="Views\Home\Page1.cshtml" />
-    <Content Include="Views\Home\Page2.cshtml" />
-    <Content Include="Views\Home\Ciudades.cshtml" />
-    <Content Include="Views\Viaje\Create.cshtml" />
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Examen\Index.cshtml" />
     <Content Include="Views\Examen\Crear.cshtml" />
-    <Content Include="Views\HomeExamen\Index.cshtml" />
-    <Content Include="Views\HomeExamen\Confirmar.cshtml" />
-    <Content Include="Views\HomeExamen\DarExamen.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Confirmar.cshtml" />
+    <Content Include="Views\Home\DarExamen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

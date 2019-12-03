@@ -22,7 +22,6 @@ namespace SimuladorExamenUPN.Controllers
         public ActionResult Index(int temaId)
         {
             var tema = context.Temas
-                //.Include(o => o.Preguntas)
                 .Include(o => o.Preguntas.Select(x => x.Alternativas))
                 .Where(x => x.Id == temaId)
                 .FirstOrDefault();

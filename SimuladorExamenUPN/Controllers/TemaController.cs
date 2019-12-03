@@ -37,16 +37,11 @@ namespace SimuladorExamenUPN.Controllers
             return View(new Tema());
         }
 
-        [HttpPost] // esto sirve para que solo acepte peticiones http POST
+        [HttpPost]
         public ActionResult Crear(Tema tema,List<int> Ids)
         {
 
-            ViewBag.Categorias = context.Categorias.ToList();
-            //bool pasoValicacion = EsValido(tema);   
-            //if (tema.Nombre == null || tema.Nombre == "")
-            //    ModelState.AddModelError("Nombre", "Nombre es obligatorio");
-            //if (tema.Descripcion == null || tema.Descripcion == "")
-            //    ModelState.AddModelError("Descripcion", "Descripcion es obligatorio...");
+            ViewBag.Categorias = context.Categorias.ToList();           
 
             if (ModelState.IsValid == true)
             {
@@ -82,12 +77,7 @@ namespace SimuladorExamenUPN.Controllers
 
         [HttpPost]
         public ActionResult Editar(Tema tema)
-        {
-            
-            //Tema temaDB = context.Temas.Where(x => x.Id == tema.Id).First();
-            //temaDB.Nombre = tema.Nombre;
-            //temaDB.Descripcion = tema.Descripcion;
-            //context.SaveChanges();
+        {      
             if (ModelState.IsValid == true)
             {
                 context.Entry(tema).State = EntityState.Modified;
@@ -108,23 +98,5 @@ namespace SimuladorExamenUPN.Controllers
 
             return RedirectToAction("Index");
         }
-
-        //private bool EsValido(Tema tema)
-        //{
-        //    var pasoValicacion = true;
-        //    if (tema.Nombre == null || tema.Nombre == "")
-        //    {
-        //        ViewBag.NombreValicion = "Nombre es obligatorio";
-        //        pasoValicacion = false;
-        //    }
-
-        //    if (tema.Descripcion == null || tema.Descripcion == "")
-        //    {
-        //        ViewBag.DescripcionValicion = "Descripción es obligatorio";
-        //        pasoValicacion = false;
-        //    }
-
-        //    return pasoValicacion;
-        //}
     }
 }
